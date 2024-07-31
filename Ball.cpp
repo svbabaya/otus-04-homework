@@ -2,6 +2,16 @@
 #include <cmath>
 
 /**
+ * Конструктор
+ */
+Ball::Ball(const Velocity velocity, Point center, double radius, double mass) {
+    this -> velocity = velocity;
+    this -> center = center;
+    this -> radius = radius;
+    this -> mass = mass;
+}
+
+/**
  * Задает скорость объекта
  * @param velocity новое значение скорости
  */

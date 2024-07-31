@@ -13,6 +13,8 @@ public:
     double getMass() const;
     
     void draw(Painter& painter) const;
+
+    Ball(const Velocity velocity, Point center, double radius, double mass);
     
 private:
     Velocity velocity;
