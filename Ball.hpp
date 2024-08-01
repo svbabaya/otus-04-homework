@@ -14,12 +14,14 @@ public:
     
     void draw(Painter& painter) const;
 
-    Ball(Point center, Velocity velocity, double radius);
+    Ball(Point center, Velocity velocity, Color color, double radius, bool isCollidable);
     
 private:
     Velocity velocity;
     Point center;
+    Color color;
     double radius;
+    bool isCollidable;
     double mass;
 
 };

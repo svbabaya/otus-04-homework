@@ -36,12 +36,10 @@ World::World(const std::string& worldFilePath) {
     double y;
     double vx;
     double vy;
-    double radius;
-
     double red;
     double green;
     double blue;
-
+    double radius;
     bool isCollidable;
 
     // Здесь не хватает обработки ошибок, но на текущем
@@ -72,8 +70,9 @@ World::World(const std::string& worldFilePath) {
 
         Point center = Point(x, y);
         Velocity velocity = Velocity(vx, vy);
+        Color color = Color(red, green, blue);
         
-        const Ball ball = Ball(center, velocity, radius);
+        const Ball ball = Ball(center, velocity, color, radius, isCollidable);
         balls.push_back(ball);
 
     }

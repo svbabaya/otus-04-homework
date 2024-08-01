@@ -4,10 +4,12 @@
 /**
  * Конструктор
  */
-Ball::Ball(Point center, Velocity velocity, double radius) {
+Ball::Ball(Point center, Velocity velocity, Color color, double radius, bool isCollidable) {
     this -> center = center;
     this -> velocity = velocity;
+    this -> color = color;
     this -> radius = radius;
+    this -> isCollidable = isCollidable;
 }
 
 /**
@@ -37,7 +39,7 @@ Velocity Ball::getVelocity() const {
  */
 void Ball::draw(Painter& painter) const {
     // TODO: место для доработки
-    painter.draw(center, radius, Color(254, 254, 254));
+    painter.draw(center, radius, color);
 }
 
 /**
