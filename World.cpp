@@ -69,6 +69,13 @@ World::World(const std::string& worldFilePath) {
         // сконструируем объект Ball ball;
         // добавьте его в конец контейнера вызовом
         // balls.push_back(ball);
+
+        Point center = Point(x, y);
+        Velocity velocity = Velocity(vx, vy);
+        
+        const Ball ball = Ball(center, velocity, radius);
+        balls.push_back(ball);
+
     }
 }
 

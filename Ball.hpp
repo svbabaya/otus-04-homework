@@ -14,7 +14,7 @@ public:
     
     void draw(Painter& painter) const;
 
-    Ball(const Velocity velocity, Point center, double radius, double mass);
+    Ball(Point center, Velocity velocity, double radius);
     
 private:
     Velocity velocity;

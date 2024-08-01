@@ -4,11 +4,10 @@
 /**
  * Конструктор
  */
-Ball::Ball(const Velocity velocity, Point center, double radius, double mass) {
-    this -> velocity = velocity;
+Ball::Ball(Point center, Velocity velocity, double radius) {
     this -> center = center;
+    this -> velocity = velocity;
     this -> radius = radius;
-    this -> mass = mass;
 }
 
 /**
