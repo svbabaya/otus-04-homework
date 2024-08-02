@@ -12,6 +12,11 @@ std::istream& operator>>(std::istream& is_point, Point& point) {
     return is_point;
 }
 
+std::istream& operator>>(std::istream& is_color, Color& color) {
+    is_color >> color.r >> color.g >> color.b;
+    return is_color;
+}
+
 /**
  * Конструирует объект мира для симуляции
  * @param worldFilePath путь к файлу модели мира
@@ -45,9 +50,9 @@ World::World(const std::string& worldFilePath) {
     // double y;
     // double vx;
     // double vy;
-    double red;
-    double green;
-    double blue;
+    // double red;
+    // double green;
+    // double blue;
     double radius;
     bool isCollidable;
 
@@ -66,8 +71,10 @@ World::World(const std::string& worldFilePath) {
         Velocity velocity(pVelocity);
 
         // Читаем три составляющие цвета шара
-        stream >> red >> green >> blue;
-        Color color = Color(red, green, blue);
+        // stream >> red >> green >> blue;
+        // Color color = Color(red, green, blue);
+        Color color;
+        stream >> color;
 
         // Читаем радиус шара
         stream >> radius;
