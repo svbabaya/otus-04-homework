@@ -11,10 +11,12 @@ public:
     Point getCenter() const;
     double getRadius() const;
     double getMass() const;
+    bool getIsCollidable() const;
     
     void draw(Painter& painter) const;
 
     Ball(Point center, Velocity velocity, Color color, double radius, bool isCollidable);
+
     
 private:
     Velocity velocity;

@@ -80,3 +80,10 @@ double Ball::getMass() const {
     // TODO: место для доработки
     return M_PI * pow(radius, 3) * 4. / 3.;
 }
+
+/**
+ * @brief Возвращает флаг разрешения обработки коллизий
+ */
+bool Ball::getIsCollidable() const {
+    return isCollidable;
+}

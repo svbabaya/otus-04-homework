@@ -15,8 +15,14 @@ void Physics::update(std::vector<Ball>& balls, const size_t ticks) const {
 
     for (size_t i = 0; i < ticks; ++i) {
         move(balls);
+
+        /**
+         * @brief Проверка флага разрешения коллизий
+         */
+        if(Ball::getIsCollidable) {
         collideWithBox(balls);
         collideBalls(balls);
+        }
     }
 }
 

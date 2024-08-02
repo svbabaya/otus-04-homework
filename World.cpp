@@ -68,9 +68,9 @@ World::World(const std::string& worldFilePath) {
         // добавьте его в конец контейнера вызовом
         // balls.push_back(ball);
 
-        Point center = Point(x, y);
-        Velocity velocity = Velocity(vx, vy);
-        Color color = Color(red, green, blue);
+        const Point center = Point(x, y);
+        const Velocity velocity = Velocity(vx, vy);
+        const Color color = Color(red, green, blue);
         
         const Ball ball = Ball(center, velocity, color, radius, isCollidable);
         balls.push_back(ball);
