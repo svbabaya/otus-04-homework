@@ -7,10 +7,16 @@
 // Изменять не следует
 static constexpr double timePerTick = 0.001;
 
+std::istream& operator>>(std::istream& is_point, Point& point) {
+    is_point >> point.x >> point.y;
+    return is_point;
+}
+
 /**
  * Конструирует объект мира для симуляции
  * @param worldFilePath путь к файлу модели мира
  */
+
 World::World(const std::string& worldFilePath) {
 
     std::ifstream stream(worldFilePath);
@@ -23,7 +29,10 @@ World::World(const std::string& worldFilePath) {
      * многократно - хорошо бы вынести это в функцию
      * и не дублировать код...
      */
-    stream >> topLeft.x >> topLeft.y >> bottomRight.x >> bottomRight.y;
+
+    // stream >> topLeft.x >> topLeft.y >> bottomRight.x >> bottomRight.y;
+    stream >> topLeft >> bottomRight;
+
     physics.setWorldBox(topLeft, bottomRight);
 
     /**
@@ -32,10 +41,10 @@ World::World(const std::string& worldFilePath) {
      * как и (red, green, blue). Опять же, можно упростить
      * этот код, научившись читать сразу Point, Color...
      */
-    double x;
-    double y;
-    double vx;
-    double vy;
+    // double x;
+    // double y;
+    // double vx;
+    // double vy;
     double red;
     double green;
     double blue;
@@ -45,13 +54,24 @@ World::World(const std::string& worldFilePath) {
     // Здесь не хватает обработки ошибок, но на текущем
     // уровне прохождения курса нас это устраивает
     while (stream.peek(), stream.good()) {
+
         // Читаем координаты центра шара (x, y) и вектор
         // его скорости (vx, vy)
-        stream >> x >> y >> vx >> vy;
+        // stream >> x >> y >> vx >> vy;
+        Point center;
+        stream >> center;
+
+        Point pVelocity;
+        stream >> pVelocity;
+        Velocity velocity(pVelocity);
+
         // Читаем три составляющие цвета шара
         stream >> red >> green >> blue;
+        Color color = Color(red, green, blue);
+
         // Читаем радиус шара
         stream >> radius;
+
         // Читаем свойство шара isCollidable, которое
         // указывает, требуется ли обрабатывать пересечение
         // шаров как столкновение. Если true - требуется.
@@ -68,13 +88,8 @@ World::World(const std::string& worldFilePath) {
         // добавьте его в конец контейнера вызовом
         // balls.push_back(ball);
 
-        const Point center = Point(x, y);
-        const Velocity velocity = Velocity(vx, vy);
-        const Color color = Color(red, green, blue);
-        
         const Ball ball = Ball(center, velocity, color, radius, isCollidable);
         balls.push_back(ball);
-
     }
 }
 
