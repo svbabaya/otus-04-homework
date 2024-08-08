@@ -10,6 +10,7 @@ Ball::Ball(Point center, Velocity velocity, Color color, double radius, bool isC
     this->color = color;
     this->radius = radius;
     this->isCollidable = isCollidable;
+    mass = M_PI * pow(radius, 3) * 4. / 3.;
 }
 
 /**
@@ -78,7 +79,7 @@ double Ball::getRadius() const {
  */
 double Ball::getMass() const {
     // TODO: место для доработки
-    return M_PI * pow(radius, 3) * 4. / 3.;
+    return mass;
 }
 
 /**
